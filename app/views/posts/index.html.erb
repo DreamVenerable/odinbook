@@ -1,0 +1,14 @@
+
+<div>
+  <% @posts.each do |post| %>
+    <a class="post-card">
+      <h5 class="post-title"><%= post.title %></h5>
+      <p class="post-body"><%= post.body %></p>
+    </a>
+  <% end %>
+
+
+  <div>
+    <%= link_to "New Post", new_post_path %>
+  </div>
+</div>

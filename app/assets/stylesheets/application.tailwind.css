@@ -2,12 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+
 
 @layer components {
+  .link-primary {
+    @apply block py-2 px-3 text-white rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0;
+  }
+
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
+  }
+
+  .input-field {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-800 dark:text-white;
+  }
+
+  .input-text-area {
+    @apply block p-2.5 w-full text-sm text-gray-900 bg-gray-800 rounded-lg border border-gray-300 dark:bg-gray-800 dark:border-gray-800 dark:text-white focus:ring-indigo-600;
+  }
+
+  .input-label {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+  }
+
+  .post-card {
+    @apply block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700;
+  }
+
+  .post-title {
+    @apply mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white;
+  }
+
+  .post-body {
+    @apply font-normal text-gray-700 dark:text-gray-400;
   }
 }
 
-*/
+

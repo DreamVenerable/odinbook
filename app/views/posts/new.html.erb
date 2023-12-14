@@ -1,0 +1,24 @@
+<%= form_with model: Post.new do |form| %>
+
+  <div>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li style="color: red"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="mb-5">
+      <%= form.label 'Title:', class: "input-label" %><br>
+      <%= form.text_field :title, class: "input-field" %><br>
+    </div>
+    <div class="mb-5">
+      <%= form.label 'Body:', class: "input-label" %><br>
+      <%= form.text_area :body, class: "input-text-area" %><br>
+    </div>
+    <%= form.submit class: "btn-primary" %>
+  </div>
+
+<% end %>
