@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :followees, through: :followed_users, dependent: :destroy
 
   has_many :posts
+  has_many :likes, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
