@@ -1,23 +1,35 @@
 
 <div>
   <% @posts.each do |post| %>
-    <a class="post-card">
-      <h5 class="post-title"><%= post.title %></h5>
-      <p class="post-body"><%= post.body %></p>
-      <%= button_to post_likes_path(post) do %>
+    <div class="justify-center gap-2.5">
+      <div class="py-2">
+        <span class="flex items-center gap-2.5">
+          <%= image_tag 'pfp.jpeg', alt: 'SeKa avatar', class: "w-8 h-8 rounded-full" %>
+          <%= post.user.username %>
+        </span>
+      </div>
 
-        <svg class="w-6 h-6 <%= liked?(post) ? "#{'text-red-500'}" : "#{'text-gray-400'}" %>" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-          <path d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z"/>
-        </svg>
+      <div class="flex items-center gap-2.5">
 
+        <div class="post-card flex-1">
+          <h5 class="post-title"><%= post.title %></h5>
+          <p class="post-body"><%= post.body %></p>
+          
+          <%= link_to post_path(post), class: "link-secondary" do %>
+            Comments
+            <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+          <% end %>
+        </div>
+
+        <%= button_to post_likes_path(post), class: "flex-none" do %>
+          <svg class="w-6 h-6 <%= liked?(post) ? "#{'text-red-500'}" : "#{'text-gray-400'}" %>" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+            <path d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z"/>
+          </svg>
           <%= post.likes.count %>
-      <% end %>
-
-    </a>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-
-
-  <div>
-    <%= link_to "New Post", new_post_path %>
-  </div>
 </div>
