@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
       flash.now[:error] = "Invalid post!"
       render :new, status: :unprocessable_entity

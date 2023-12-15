@@ -6,7 +6,7 @@
 
 @layer components {
   .link-primary {
-    @apply block py-2 px-3 text-white rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0;
+    @apply block py-2 px-3 text-white rounded hover:bg-transparent border-0 hover:text-blue-500 md:p-0;
   }
 
   .btn-primary {

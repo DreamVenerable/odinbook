@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'users/:id/profile', to: 'users#profile', as: :profile
 
+  resources :users, only: [] do
+    resources :fellowships, only: [:index, :create, :update]
+  end
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',

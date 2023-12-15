@@ -1,7 +1,8 @@
 
-<div class="justify-center w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div class="justify-center w-full border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <div class="flex justify-end px-4 pt-4">
-        <%= link_to edit_user_registration_path, class: "inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" do %>
+      <% if current_user == @user %>
+        <%= link_to edit_user_registration_path do %>
           <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
               <path d="M19 11V9a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L12 2.757V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L2.929 4.343a1 1 0 0 0 0 1.414l.536.536L2.757 8H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535L8 17.243V18a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H18a1 1 0 0 0 1-1Z"/>
@@ -9,6 +10,7 @@
             </g>
           </svg>
         <% end %>
+      <% end %>
     </div>
     <div class="flex flex-col items-center pb-10">
         <%= image_tag 'pfp.jpeg', alt: 'SeKa avatar', class: "w-24 h-24 mb-3 rounded-full shadow-lg" %>
@@ -25,9 +27,14 @@
             Following: <%= @user.followees.count %>
           </button>
         </div>
-        <div class="flex mt-4 md:mt-6">
-            <a href="#" class="inline-flex m-1.5 items-center btn-primary">Add friend</a>
-            <a href="#" class="inline-flex m-2 items-center btn-primary dark:bg-transparent dark:hover:bg-gray-700 border dark:border-gray-700">Message</a>
-        </div>
+        <% if current_user != @user %>
+          <div class="flex mt-4 md:mt-6">
+            <% if following?(@user) %>
+              <%= button_to "Unfollow", user_fellowships_path(@user), class: "inline-flex items-center btn-primary dark:bg-gray-900 dark:hover:bg-gray-950", method: :post %>
+            <% else %>
+              <%= button_to "Follow", user_fellowships_path(@user), class: "inline-flex items-center btn-primary" %>
+            <% end %>
+          </div>
+        <% end %>
     </div>
 </div>
