@@ -20,5 +20,8 @@
       <%= @post.likes.count %>
     <% end %>
   </div>
-  Comments
+
+  <%= render partial: "comments/form", locals: {post: @post} %>
+
+  <%= render @post.comments %>
 </div>

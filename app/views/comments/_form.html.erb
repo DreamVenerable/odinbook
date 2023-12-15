@@ -1,0 +1,16 @@
+<section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
+  <div class="max-w-2xl mx-auto px-4">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion (<%= post.comments.count %>)</h2>
+    </div>
+    <div class="mt-4">
+      <%= form_with model: [@post, Comment.new], url: post_comments_path(@post) do |f| %>
+        <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+          <%= f.text_area :body, class: "px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800", placeholder: "Your comment here..." %>
+          <%= f.hidden_field :post_id, value: @post.id %>
+          <%= f.submit "Post Comment", class: "inline-flex items-center py-2.5 px-4 btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
