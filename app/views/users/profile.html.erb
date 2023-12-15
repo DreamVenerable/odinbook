@@ -13,7 +13,11 @@
       <% end %>
     </div>
     <div class="flex flex-col items-center pb-10">
-        <%= image_tag 'pfp.jpeg', alt: 'SeKa avatar', class: "w-24 h-24 mb-3 rounded-full shadow-lg" %>
+      <% if current_user == @user %>
+        <%= image_tag 'pfp2.png', alt: 'Profile avatar', class: "w-24 h-24 mb-3 rounded-full shadow-lg" %>
+      <% else %>
+        <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "w-24 h-24 mb-3 rounded-full shadow-lg" %>
+      <% end %>
         <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"><%= @user.username %></h5>
         <div class="inline-flex rounded-md shadow-sm" role="group">
           <button type="button" class="profile-stats">
@@ -37,4 +41,11 @@
           </div>
         <% end %>
     </div>
+
+
+
+</div>
+
+<div class="my-5">
+  <%= render @user.posts%>
 </div>

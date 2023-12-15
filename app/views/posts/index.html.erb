@@ -4,7 +4,7 @@
       <div class= "p-2 dark:hover:bg-gray-800 rounded-lg max-w-max">
         <%= link_to profile_path(post.user) do %>
           <span class= "flex items-center gap-2.5">
-            <%= image_tag 'pfp.jpeg', alt: 'SeKa avatar', class: "w-8 h-8 rounded-full" %>
+            <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "w-8 h-8 rounded-full" %>
             <%= post.user.username %>
           </span>
         <% end %>

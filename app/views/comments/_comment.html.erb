@@ -1,5 +1,23 @@
-<div class="card">
-  <div class="card-body">
-    <%= comment.body %>
-  </div>
-</div>
+
+    <article class="p-6 text-base bg-white rounded-sm dark:bg-gray-900 border-t dark:border-gray-700">
+      <div class="flex justify-between items-center mb-2">
+        <div class="flex items-center p-2 dark:hover:bg-gray-800 rounded-lg max-w-max">
+          <%= link_to profile_path(comment.user) do %>
+            <span class="flex items-center gap-2.5">
+              <%= image_tag 'pfp2.png', alt: 'Profile avatar', class: "mr-2 w-6 h-6 rounded-full" %>
+              <%= comment.user.username %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <p class="text-gray-500 dark:text-gray-400"><%= comment.body %></p>
+      <div class="flex items-center mt-4 space-x-4">
+        <button type="button"
+          class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium">
+          <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+          </svg>
+          Reply
+        </button>
+      </div>
+    </article>
