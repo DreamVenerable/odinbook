@@ -18,15 +18,15 @@ class FellowshipsController < ApplicationController
     redirect_to request.referrer
   end
 
-  def update
-    if @fellowship.update(status: 'accepted')
-      flash[:notice] = "Friend request accepted."
-    else
-      flash[:alert] = "Failed to accept friend request."
-    end
+  # def update
+  #   if @fellowship.update(status: 'accepted')
+  #     flash[:notice] = "Friend request accepted."
+  #   else
+  #     flash[:alert] = "Failed to accept friend request."
+  #   end
 
-    redirect_to request.referrer
-  end
+  #   redirect_to request.referrer
+  # end
 
   def delete
     @fellowship.destroy

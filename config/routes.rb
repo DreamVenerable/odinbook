@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'users/:id/profile', to: 'users#profile', as: :profile
 
   resources :users, only: [] do
-    resources :fellowships, only: [:index, :create, :update]
+    resources :fellowships, only: [:index, :create]
   end
 
   devise_for :users, controllers: {
