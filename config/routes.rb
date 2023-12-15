@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   get 'users/:id/profile', to: 'users#profile', as: :profile
+  get 'users/:id/fellowships/following', to: 'fellowships#following', as: :following
+  get 'users/:id/fellowships/followers', to: 'fellowships#followers', as: :followers
 
   resources :users, only: [] do
-    resources :fellowships, only: [:index, :create]
+    resources :fellowships, only: [:index, :create, :show]
   end
 
   devise_for :users, controllers: {

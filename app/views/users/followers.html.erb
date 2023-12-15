@@ -1,0 +1,30 @@
+<h1>Followers</h1>
+
+
+<% @followers.each do |user| %>
+  
+    <div class="post-card flex py-5 my-2 dark:bg-gray-900 border dark:hover:bg-gray-800">
+      <%= link_to profile_path(user) do %>
+        <span class= "flex items-center">
+          <% if current_user == user %>
+            <%= image_tag 'pfp2.png', alt: 'Profile avatar', class: "w-12 h-12 rounded-full" %>
+          <% else %>
+            <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "w-12 h-12 rounded-full" %>
+          <% end %>
+          <h5 class="p-5 text-xl font-medium dark:text-white"><%= user.username %></h5>
+        </span>
+      <% end %>
+
+      <% unless user == current_user %>
+        <div class="flex items-center">
+          <% if following?(user) %>
+            <%= button_to "Unfollow", user_fellowships_path(user), class: "inline-flex items-center btn-primary dark:bg-gray-900 dark:hover:bg-gray-950" %>
+          <% else %>
+            <%= button_to "Follow", user_fellowships_path(user), class: "inline-flex items-center btn-primary" %>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+
+<% end %>

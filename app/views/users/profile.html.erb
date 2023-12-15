@@ -21,15 +21,14 @@
         <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"><%= @user.username %></h5>
         <div class="inline-flex rounded-md shadow-sm" role="group">
           <button type="button" class="profile-stats">
-
             Posts: <%= @user.posts.count %>
           </button>
-          <button type="button" class="profile-stats">
+          <%= link_to followers_path, class: "profile-stats" do %>
             Followers: <%= @user.followers.count %>
-          </button>
-          <button type="button" class="profile-stats">
+          <% end %>
+          <%= link_to following_path, class: "profile-stats" do %>
             Following: <%= @user.followees.count %>
-          </button>
+          <% end %>
         </div>
         <% if current_user != @user %>
           <div class="flex mt-4 md:mt-6">
