@@ -1,27 +1,33 @@
 <div>
   <% @posts.each do |post| %>
-    <div class= "justify-center gap-2.5">
-      <div class= "p-2 dark:hover:bg-gray-800 rounded-lg max-w-max">
+    <div class= "justify-center mb-10">
+      <div class= "p-2 dark:hover:bg-gray-800 rounded-lg  max-w-max">
         <%= link_to profile_path(post.user) do %>
-          <span class= "flex items-center gap-2.5">
-            <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "w-8 h-8 rounded-full" %>
+          <span class= "flex items-center gap-1.5">
+            <% if current_user == post.user %>
+              <%= image_tag 'pfp2.png', alt: 'Profile avatar', class: "w-8 h-8 rounded-full" %>
+            <% else %>
+              <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "w-8 h-8 rounded-full" %>
+            <% end %>
             <%= post.user.username %>
           </span>
         <% end %>
       </div>
 
-      <div class="flex items-center gap-2.5">
-        <div class="post-card flex-1 w-1/2">
-          <h5 class="post-title"><%= post.title %></h5>
-          <p class="post-body break-all"><%= post.body %></p>
-          
-          <%= link_to post_path(post), class: "flex link-secondary justify-end" do %>
-            Comments
-            <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-            </svg>
-          <% end %>
-        </div>
+      <div class="flex gap-2 items-center">
+        <%= link_to post_path(post), class: "flex-1" do %>
+          <div class="post-card">
+            <h5 class="post-title"><%= post.title %></h5>
+            <p class="post-body break-all"><%= post.body %></p>
+            
+            <div class="flex link-secondary justify-end">
+              <p>Comments</p>
+              <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+              </svg>
+            </div>
+          </div>
+        <% end %>
 
         <%= button_to post_likes_path(post), class: "flex-none" do %>
           <svg class="w-6 h-6 <%= liked?(post) ? "#{'text-red-500'}" : "#{'text-gray-400'}" %>" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">

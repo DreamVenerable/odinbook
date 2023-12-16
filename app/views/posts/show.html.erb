@@ -2,16 +2,20 @@
   <div class="p-2 dark:hover:bg-gray-800 rounded-lg max-w-max">
     <%= link_to profile_path(@post.user) do %>
       <span class="flex items-center gap-2.5">
-        <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "w-8 h-8 rounded-full" %>
+        <% if current_user == @post.user %>
+          <%= image_tag 'pfp2.png', alt: 'Profile avatar', class: "w-8 h-8 rounded-full" %>
+        <% else %>
+          <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "w-8 h-8 rounded-full" %>
+        <% end %>
         <%= @post.user.username %>
       </span>
     <% end %>
   </div>
 
-  <div class="flex items-center gap-2.5">
+  <div class="flex items-center gap-2">
     <div class="post-card flex-1 w-1/2">
       <h5 class="post-title"><%= @post.title %></h5>
-      <p class="post-body"><%= @post.body %></p>
+      <p class="post-body break-all"><%= @post.body %></p>
     </div>
     <%= button_to post_likes_path(@post), class: "flex-none" do %>
       <svg class="w-6 h-6 <%= liked?(@post) ? "#{'text-red-500'}" : "#{'text-gray-400'}" %>" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
