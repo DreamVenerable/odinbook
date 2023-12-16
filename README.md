@@ -34,7 +34,7 @@ Welcome to Odinbook! This is a web application built with Ruby on Rails that pro
 - **Ruby on Rails:** The application is built using the Ruby programming language and the Rails framework for web development
 - **Database:** PostgreSQL is used as the relational database management system to store and retrieve data efficiently.
 - **User Authentication:** Devise gem is employed for secure user authentication, providing features such as sign-up, login, and password recovery.
-**Frontend Styling:** The frontend is styled using HTML, CSS (TailwindCSS).
+- **Frontend Styling:** The frontend is styled using HTML, CSS (TailwindCSS).
 
 ### Project Structure
 
