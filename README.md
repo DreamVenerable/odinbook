@@ -14,39 +14,39 @@
 + [Things to improve](#things_to_improve)
 
 
-## Overview <a name = "overview"></a>
+## 📖 Overview <a name = "overview"></a>
 
 Welcome to Odinbook! This is a web application built with Ruby on Rails that provides users with a platform to share and interact with posts, as well as connect with other users. The application includes features such as creating posts, commenting, and following other users.
 
 
-## Features <a name = "features"></a>
+## 🚀 Features <a name = "features"></a>
 
-- User Authentication: Users can sign up, log in, and log out securely using Devise for authentication.
-- Profile Page: Each user has a dedicated profile page displaying their posts and providing options to view followers, following, and more.
-- Post Creation and Interaction: Users can create new posts, comment on posts, and like posts.
-- Follow/Unfollow: Users can follow and unfollow other users to stay updated on their activities.
+- **User Authentication:** Users can sign up, log in, and log out securely using Devise for authentication.
+- **Profile Page:** Each user has a dedicated profile page displaying their posts and providing options to view followers, following, and more.
+- **Post Creation and Interaction:** Users can create new posts, comment on posts, and like posts.
+- **Follow/Unfollow:** Users can follow and unfollow other users to stay updated on their activities.
 
 
-## How it's made <a name = "how_its_made"></a>
+## 🛠️ How it's made <a name = "how_its_made"></a>
 
 ### Technologies Used
 
-- Ruby on Rails: The application is built using the Ruby programming language and the Rails framework for web development
-- Database: PostgreSQL is used as the relational database management system to store and retrieve data efficiently.
-- User Authentication: Devise gem is employed for secure user authentication, providing features such as sign-up, login, and password recovery.
-Frontend Styling: The frontend is styled using HTML, CSS (TailwindCSS).
+- **Ruby on Rails:** The application is built using the Ruby programming language and the Rails framework for web development
+- **Database:** PostgreSQL is used as the relational database management system to store and retrieve data efficiently.
+- **User Authentication:** Devise gem is employed for secure user authentication, providing features such as sign-up, login, and password recovery.
+**Frontend Styling:** The frontend is styled using HTML, CSS (TailwindCSS).
 
 ### Project Structure
 
 The application follows the Model-View-Controller (MVC) architecture, with key components organized as follows:
 
-- Models: Ruby classes that define the data structure and interact with the database.
-- Views: HTML templates responsible for presenting the data to users.
-- Controllers: Ruby classes that handle the application's logic and orchestrate communication between models and views.
-- Routes: Defined in the ```config/routes.rb``` file, routes map incoming requests to the appropriate controller actions.
+- **Models:** Ruby classes that define the data structure and interact with the database.
+- **Views:** HTML templates responsible for presenting the data to users.
+- **Controllers:** Ruby classes that handle the application's logic and orchestrate communication between models and views.
+- **Routes:** Defined in the ```config/routes.rb``` file, routes map incoming requests to the appropriate controller actions.
 
 
-## Future Improvements <a name = "future_improvements"></a>
+## 🚧 Future Improvements <a name = "future_improvements"></a>
 
 ### 1. Private Accounts and Follow Requests
 
@@ -92,6 +92,6 @@ Introduce testing frameworks such as RSpec to ensure the robustness and reliabil
 
 Implement lazy loading for posts and comments to optimize page performance. Load an initial set of posts and comments, and dynamically fetch additional content as the user scrolls down or requests more data. This approach ensures a faster initial page load and a smoother user experience while navigating through posts and comments. Consider incorporating technologies like infinite scroll or pagination to manage the loading of content efficiently.
 
+### 12. Code Refactoring for DRYness and Readability
 
-
-
+Evaluate the existing codebase and identify opportunities for refactoring to adhere to the "Don't Repeat Yourself" (DRY) principle. Streamline and consolidate repetitive code sections, making the codebase more maintainable and improving overall readability. Consider adding more view partials to modularize and reuse components across different views, promoting a more organized and comprehensible structure.
