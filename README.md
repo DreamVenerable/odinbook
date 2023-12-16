@@ -11,7 +11,7 @@
 + [Overview](#overview)
 + [Features](#features)
 + [How it's made](#how_its_made)
-+ [Things to improve](#things_to_improve)
++ [Future improvemenents](#future_improvements)
 
 
 ## 📖 Overview <a name = "overview"></a>
