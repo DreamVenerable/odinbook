@@ -1,50 +1,81 @@
 
-<div class="justify-center w-full border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div class="border rounded-lg dark:bg-gray-800 dark:border-gray-700">
+
+
     <div class="flex justify-end px-4 pt-4">
+
       <% if current_user == @user %>
         <%= link_to edit_user_registration_path do %>
+
           <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
               <path d="M19 11V9a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L12 2.757V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L2.929 4.343a1 1 0 0 0 0 1.414l.536.536L2.757 8H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535L8 17.243V18a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H18a1 1 0 0 0 1-1Z"/>
               <path d="M10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
             </g>
           </svg>
+
         <% end %>
       <% end %>
+
     </div>
+
+
     <div class="flex flex-col items-center pb-10">
+
       <% if current_user == @user %>
-        <%= image_tag 'pfp2.png', alt: 'Profile avatar', class: "w-24 h-24 mb-3 rounded-full shadow-lg" %>
+        <%= image_tag 'pfp2.png', alt: 'Profile avatar', class: "profile-avatar" %>
       <% else %>
-        <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "w-24 h-24 mb-3 rounded-full shadow-lg" %>
+        <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "profile-avatar" %>
       <% end %>
-        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"><%= @user.username %></h5>
-        <div class="inline-flex rounded-md shadow-sm" role="group">
-          <button type="button" class="profile-stats">
+
+      <h5 class="mb-1 text-xl font-medium dark:text-white"><%= @user.username %></h5>
+
+      <div class="inline-flex rounded-md mt-1">
+
+          <%= link_to user_posts_path,
+                      data: { turbo_frame: "profile_extension" },
+                      class: "profile-stats" do %>
+
             Posts: <%= @user.posts.count %>
-          </button>
-          <%= link_to followers_path, class: "profile-stats" do %>
+          <% end %>
+
+          <%= link_to followers_path,
+                      data: { turbo_frame: "profile_extension" },
+                      class: "profile-stats" do %>
+
             Followers: <%= @user.followers.count %>
           <% end %>
-          <%= link_to following_path, class: "profile-stats" do %>
+
+          <%= link_to following_path,
+                      data: { turbo_frame: "profile_extension" },
+                      class: "profile-stats" do %>
+
             Following: <%= @user.followees.count %>
           <% end %>
+
+
+      </div>
+
+      <% if current_user != @user %>
+        <div class="flex mt-6">
+          <% if following?(@user) %>
+            <%= button_to "Unfollow", user_fellowships_path(@user), class: "btn-primary dark:bg-gray-900 dark:hover:bg-gray-950", method: :post %>
+          <% else %>
+            <%= button_to "Follow", user_fellowships_path(@user), class: "btn-primary" %>
+          <% end %>
         </div>
-        <% if current_user != @user %>
-          <div class="flex mt-4 md:mt-6">
-            <% if following?(@user) %>
-              <%= button_to "Unfollow", user_fellowships_path(@user), class: "inline-flex items-center btn-primary dark:bg-gray-900 dark:hover:bg-gray-950", method: :post %>
-            <% else %>
-              <%= button_to "Follow", user_fellowships_path(@user), class: "inline-flex items-center btn-primary" %>
-            <% end %>
-          </div>
-        <% end %>
+      <% end %>
+
     </div>
 
 
-
 </div>
 
-<div class="my-5">
-  <%= render @user.posts%>
+
+<div class="mt-5">
+  <%= turbo_frame_tag "profile_extension" do %>
+    <%= render @user.posts %>
+  <% end %>
 </div>
+
+

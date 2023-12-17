@@ -4,4 +4,8 @@ class UsersController < ApplicationController
   def profile
     @user = User.find(params[:id])
   end
+
+  def user_posts
+    @user = User.find(params[:id])
+  end
 end

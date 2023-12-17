@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'users/:id/profile', to: 'users#profile', as: :profile
+  get 'users/:id/posts', to: 'users#user_posts', as: :user_posts
   get 'users/:id/fellowships/following', to: 'fellowships#following', as: :following
   get 'users/:id/fellowships/followers', to: 'fellowships#followers', as: :followers
 
