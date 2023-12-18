@@ -1,9 +1,3 @@
 <%= turbo_frame_tag 'profile_extension' do %>
-  <% @user.posts.each do |post| %>
-    <%= link_to post_path(post), data: { turbo_frame: "_top" } do %>
-      <div class="post-card flex-1 py-10 my-2">
-          <p class="post-body"><%= post.body %></p>
-      </div>
-    <% end %>
-  <% end %>
+    <%= render @user.posts %>
 <% end %>
