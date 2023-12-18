@@ -1,5 +1,7 @@
 <%= turbo_frame_tag Post.new %>
 
+<%= turbo_frame_tag "posts" do %>
+
     <% @posts.each do |post| %>
       <div class= "justify-center mb-10">
         <div class= "p-2 dark:hover:bg-gray-800 rounded-lg max-w-max">
@@ -43,3 +45,4 @@
 
       </div>
     <% end %>
+<% end %>
