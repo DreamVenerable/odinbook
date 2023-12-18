@@ -1,15 +1,15 @@
 
     <% @posts.each do |post| %>
       <div class= "justify-center mb-10">
-        <div class= "p-2 dark:hover:bg-gray-800 rounded-lg  max-w-max">
+        <div class= "p-2 dark:hover:bg-gray-800 rounded-lg max-w-max">
 
           <%= link_to profile_path(post.user) do %>
             <span class= "flex items-center gap-1.5">
 
               <% if current_user == post.user %>
-                <%= image_tag 'pfp2.png', alt: 'Profile avatar', class: "w-8 h-8 rounded-full" %>
+                <%= image_tag 'pfp2.png', alt: 'Profile avatar', class: "comment-avatar" %>
               <% else %>
-                <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "w-8 h-8 rounded-full" %>
+                <%= image_tag 'pfp.jpeg', alt: 'Profile avatar', class: "comment-avatar" %>
               <% end %>
 
               <%= post.user.username %>
