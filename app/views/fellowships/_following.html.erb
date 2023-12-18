@@ -12,9 +12,19 @@
           </span>
         <% end %>
 
-        <% if user == current_user %>
+        <% if following?(user)%>
           <div class="flex items-center">
-            <%= button_to "Remove follower", user_fellowships_path(user), class: "inline-flex items-center btn-primary dark:bg-gray-900 dark:hover:bg-gray-950" %>
+            <%= button_to "Unfollow", 
+                          user_fellowship_path(user, 
+                                                Fellowship.find_by(follower_id: current_user, followee_id: user)), 
+                          method: :delete,
+                          class: "inline-flex items-center btn-primary  dark:bg-gray-900 dark:hover:bg-gray-950" %>
+          </div>
+        <% else %>
+          <div class="flex items-center">
+            <%= button_to "Follow", 
+                          user_fellowships_path(user), 
+                          class: "inline-flex items-center btn-primary" %>
           </div>
         <% end %>
 

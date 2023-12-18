@@ -20,11 +20,14 @@
     </div>
 
 
-    <div class="flex flex-col items-center pb-10">
 
-      <h5 class="mb-1 text-xl font-medium dark:text-white"><%= @user.username %></h5>
 
-      <div class="inline-flex rounded-md mt-1">
+    <%= turbo_frame_tag 'profile_stats' do %>
+      <div class="flex flex-col items-center pb-10">
+        
+        <h5 class="mb-1 text-xl font-medium dark:text-white"><%= @user.username %></h5>
+
+        <div class="inline-flex rounded-md mt-1">
 
           <%= link_to user_posts_path,
                       data: { turbo_frame: "profile_extension" },
@@ -47,28 +50,28 @@
             Following: <%= @user.followees.count %>
           <% end %>
 
+        </div>
+
+        <% if current_user != @user %>
+            <div class="flex mt-6">
+
+              <% if following?(@user) %>
+                <%= button_to "Unfollow", 
+                              user_fellowship_path(@user, 
+                                                Fellowship.find_by(follower_id: current_user, followee_id: @user)), 
+                              method: :delete, 
+                              class: "btn-primary dark:bg-gray-900 dark:hover:bg-gray-950" %>
+              <% else %>
+                <%= button_to "Follow", 
+                              user_fellowships_path(@user), 
+                              class: "btn-primary" %>
+              <% end %>
+
+            </div>
+        <% end %>
 
       </div>
-
-      <% if current_user != @user %>
-        <div class="flex mt-6">
-
-          <% if following?(@user) %>
-            <%= button_to "Unfollow", 
-                          user_fellowships_path(@user), 
-                          class: "btn-primary dark:bg-gray-900 dark:hover:bg-gray-950", 
-                          method: :post %>
-          <% else %>
-            <%= button_to "Follow", 
-                          user_fellowships_path(@user), 
-                          class: "btn-primary" %>
-          <% end %>
-          
-        </div>
-      <% end %>
-
-    </div>
-
+  <% end %>
 
 </div>
 

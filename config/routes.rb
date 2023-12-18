@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'users/:id/posts', to: 'users#user_posts', as: :user_posts
 
   resources :users, only: [] do
-    resources :fellowships, only: [:index, :create]
+    resources :fellowships, only: [:index, :create, :destroy]
   end
 
   devise_for :users, controllers: {
