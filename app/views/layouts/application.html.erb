@@ -29,7 +29,10 @@
               </svg>
             <% end %>
 
-            <%= link_to "New Post", new_post_path, class: "btn-primary mx-3 md:mx-10" %>
+            <%= link_to "New Post", 
+                        new_post_path, 
+                        class: "btn-primary mx-3 md:mx-10", 
+                        data: { turbo_frame: dom_id(Post.new) } %>
           <% end %>
 
 
