@@ -12,9 +12,11 @@
           </span>
         <% end %>
 
-        <div class="flex items-center">
-          <%= button_to "Unfollow", user_fellowships_path(user), class: "inline-flex items-center btn-primary dark:bg-gray-900 dark:hover:bg-gray-950" %>
-        </div>
+        <% if user == current_user %>
+          <div class="flex items-center">
+            <%= button_to "Remove follower", user_fellowships_path(user), class: "inline-flex items-center btn-primary dark:bg-gray-900 dark:hover:bg-gray-950" %>
+          </div>
+        <% end %>
 
       </div>
 
