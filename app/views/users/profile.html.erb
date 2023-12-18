@@ -33,14 +33,14 @@
             Posts: <%= @user.posts.count %>
           <% end %>
 
-          <%= link_to followers_path,
+          <%= link_to user_fellowships_path(@user, partial: 'followers'),
                       data: { turbo_frame: "profile_extension" },
                       class: "profile-stats" do %>
 
             Followers: <%= @user.followers.count %>
           <% end %>
 
-          <%= link_to following_path,
+          <%= link_to user_fellowships_path(@user, partial: 'following'),
                       data: { turbo_frame: "profile_extension" },
                       class: "profile-stats" do %>
 
@@ -54,9 +54,14 @@
         <div class="flex mt-6">
 
           <% if following?(@user) %>
-            <%= button_to "Unfollow", user_fellowships_path(@user), class: "btn-primary dark:bg-gray-900 dark:hover:bg-gray-950", method: :post %>
+            <%= button_to "Unfollow", 
+                          user_fellowships_path(@user), 
+                          class: "btn-primary dark:bg-gray-900 dark:hover:bg-gray-950", 
+                          method: :post %>
           <% else %>
-            <%= button_to "Follow", user_fellowships_path(@user), class: "btn-primary" %>
+            <%= button_to "Follow", 
+                          user_fellowships_path(@user), 
+                          class: "btn-primary" %>
           <% end %>
           
         </div>
@@ -73,5 +78,4 @@
     <%= render @user.posts %>
   <% end %>
 </div>
-
 

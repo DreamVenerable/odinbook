@@ -1,4 +1,9 @@
-<div>
-  <h1 class="font-bold text-4xl">Fellowships#index</h1>
-  <p>Find me in app/views/fellowships/index.html.erb</p>
-</div>
+<%= turbo_frame_tag 'profile_extension' do %>
+
+  <% if params[:partial] == 'followers' %>
+    <%= render 'followers' %>
+  <% else %>
+    <%= render 'following' %>
+  <% end %>
+
+<% end %>

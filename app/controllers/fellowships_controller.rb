@@ -18,16 +18,6 @@ class FellowshipsController < ApplicationController
     redirect_to request.referrer
   end
 
-  def following
-    @following = @user.followees
-    render 'users/following'
-  end
-
-  def followers
-    @followers = @user.followers
-    render 'users/followers'
-  end
-
   # def update
   #   if @fellowship.update(status: 'accepted')
   #     flash[:notice] = "Friend request accepted."
