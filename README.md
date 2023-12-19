@@ -66,35 +66,31 @@ Improve navigation by adding breadcrumbs or a top navigation bar to facilitate e
 
 Implement OAuth authentication to allow users to sign up or log in using popular platforms such as GitHub or Google, providing a more convenient registration process.
 
-### 5. Integration of Hotwire / Stimulus / Turbo
-
-Incorporate Hotwire, Stimulus, or Turbo to enhance the app's interactivity. Utilize features like Turbo Streams to update parts of the page dynamically, reducing the need for full page refreshes.
-
-### 6. Profile Customization
+### 5. Profile Customization
 
 Enable users to upload their own profile pictures, providing a more personalized and engaging user experience.
 
-### 7. Image Uploads
+### 6. Image Uploads
 
 Extend the application's capabilities by allowing users to post images. This could involve integrating image upload functionality for posts and user avatars.
 
-### 8. Comment Replies
+### 7. Comment Replies
 
 Enhance the commenting system by allowing users to reply to comments. Implement threaded or nested comments for more organized and engaging discussions.
 
-### 9. Testing
+### 8. Testing
 
 Introduce testing frameworks such as RSpec to ensure the robustness and reliability of the application. Write unit tests, integration tests, and system tests to cover critical functionality.
 
-### 10. Lazy Loading for Posts and Comments
+### 9. Lazy Loading for Posts and Comments
 
 Implement lazy loading for posts and comments to optimize page performance. Load an initial set of posts and comments, and dynamically fetch additional content as the user scrolls down or requests more data. This approach ensures a faster initial page load and a smoother user experience while navigating through posts and comments. Consider incorporating technologies like infinite scroll or pagination to manage the loading of content efficiently.
 
-### 11. Code Refactoring for DRYness and Readability
+### 10. Code Refactoring for DRYness and Readability
 
 Evaluate the existing codebase and identify opportunities for refactoring to adhere to the "Don't Repeat Yourself" (DRY) principle. Streamline and consolidate repetitive code sections, making the codebase more maintainable and improving overall readability. Consider adding more view partials to modularize and reuse components across different views, promoting a more organized and comprehensible structure.
 
 
-### 12. Live Messaging Feature
+### 11. Live Messaging Feature
 
 Introduce a real-time messaging system that allows users to engage in live conversations with their connections. Implement WebSocket or similar technologies to enable instant message delivery and receipt. Provide a user-friendly interface that displays message status (delivered, read) and supports multimedia content, enhancing the overall communication experience. Additionally, consider implementing typing indicators to inform users when their chat partners are composing messages. This feature adds a dynamic and interactive element to the platform, fostering more immediate and engaging communication among users.
