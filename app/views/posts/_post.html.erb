@@ -8,7 +8,7 @@
     <%= link_to post_path(post), 
                 data: {turbo_frame: "_top"},
                 class: "flex-1 w-max" do %>
-      <div class="post-card flex-1 py-10 my-2">
+      <div class="post-card flex-1 py-10 my-1">
           <p class="post-body break-all"><%= post.body %></p>
       </div>
     <% end %>

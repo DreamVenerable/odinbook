@@ -1,6 +1,6 @@
 <%= form_with model: Post.new do |form| %>
 
-  <div>
+  <div class="mb-10">
 
     <% if @post.errors.any? %>
       <div id="error_explanation">
@@ -12,12 +12,17 @@
       </div>
     <% end %>
 
-    <div class="mb-5">
-      <%= form.label 'Post:', class: "input-label" %><br>
-      <%= form.text_area :body, class: "input-text-area" %><br>
-    </div>
+
+    <%= form.text_area :body, 
+                       class: "input-text-area", 
+                       input_html: { autofocus: true }, 
+                       placeholder: "Post..." %><br>
 
     <%= form.submit class: "btn-primary" %>
+    <%= link_to "Cancel", 
+                posts_path, 
+                data: { turbo_frame: "_top" },
+                class: "btn-primary bg-red-500 hover:bg-red-600" %>
     
   </div>
 

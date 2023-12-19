@@ -5,5 +5,5 @@ class Post < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
-  validates :body, length: { maximum: 280 }
+  validates :body, length: { maximum: 280 }, presence: true
 end
