@@ -1,7 +1,16 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+  <h2>Account Privacy</h2>
+
+  <div class="field">
+    <%= f.check_box :private, class: "checkbox" %>
+    <%= f.label :private, class: "ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" %>
+  </div><br />
+
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
   <div class="field">
     <%= f.label :username, class: "input-label" %>

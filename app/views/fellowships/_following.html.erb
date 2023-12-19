@@ -3,7 +3,7 @@
   <h1>Following</h1>
 
   <% @following.each do |user| %>
-    
+    <% if accepted?(user, current_user) || accepted?(user, @user) %>
       <div class="post-card flex py-5 my-2 dark:bg-gray-900 border dark:hover:bg-gray-800">
 
         <%= link_to profile_path(user), data: { turbo_frame: "_top" } do %>
@@ -12,24 +12,29 @@
           </span>
         <% end %>
 
-        <% if following?(user)%>
-          <div class="flex items-center">
-            <%= button_to "Unfollow", 
-                          user_fellowship_path(user, 
-                                                Fellowship.find_by(follower_id: current_user, followee_id: user)), 
-                          method: :delete,
-                          class: "inline-flex items-center btn-primary  dark:bg-gray-900 dark:hover:bg-gray-950" %>
-          </div>
-        <% else %>
-          <div class="flex items-center">
-            <%= button_to "Follow", 
-                          user_fellowships_path(user), 
-                          class: "inline-flex items-center btn-primary" %>
+        <% unless current_user == user %>
+          <div class="flex items-center justify-end">
+            <% if accepted?(user, current_user)%>
+              <%= button_to "Unfollow", 
+                            user_fellowship_path(user, 
+                                                  Fellowship.find_by(follower_id: current_user, followee_id: user)), 
+                            method: :delete,
+                            class: "btn-primary dark:bg-gray-900 dark:hover:bg-gray-950" %>
+            <% elsif onhold?(user, current_user) %>
+              <%= button_to "Requested", 
+                            user_fellowship_path(user, 
+                                              Fellowship.find_by(follower_id: current_user, followee_id: user)), 
+                            method: :delete, 
+                            class: "btn-primary dark:bg-gray-900 dark:hover:bg-gray-950" %>
+            <% else %>
+              <%= button_to "Follow", 
+                            user_fellowships_path(user), 
+                            class: "btn-primary" %>
+            <% end %>
           </div>
         <% end %>
-
       </div>
-
+    <% end %>
   <% end %>
 
 <% end %>

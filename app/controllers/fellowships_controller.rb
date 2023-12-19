@@ -5,10 +5,16 @@ class FellowshipsController < ApplicationController
   def index
     @following = @user.followees
     @followers = @user.followers
+    @requests = @user.following_users.where(status: 'onhold')
+    @requesting_users = User.where(id: @requests.pluck(:follower_id))
   end
 
   def create
-    @fellowship = current_user.followed_users.create(followee_id: @user.id)
+    if @user[:private]
+      @fellowship = current_user.followed_users.create(followee_id: @user.id, status: 'onhold')
+    else
+      @fellowship = current_user.followed_users.create(followee_id: @user.id)
+    end
 
     redirect_to request.referrer
   end
@@ -20,15 +26,12 @@ class FellowshipsController < ApplicationController
     redirect_to request.referrer
   end
 
-  # def update
-  #   if @fellowship.update(status: 'accepted')
-  #     flash[:notice] = "Friend request accepted."
-  #   else
-  #     flash[:alert] = "Failed to accept friend request."
-  #   end
+  def update
+    @fellowship = Fellowship.find(params[:id])
+    @fellowship.update(status: 'accepted')
 
-  #   redirect_to request.referrer
-  # end
+    redirect_to request.referrer
+  end
 
   private
 

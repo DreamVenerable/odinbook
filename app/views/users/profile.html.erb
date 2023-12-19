@@ -40,14 +40,14 @@
                       data: { turbo_frame: "profile_extension" },
                       class: "profile-stats" do %>
 
-            Followers: <%= @user.followers.count %>
+            Followers: <%= @user.following_users.where(status: 'accepted').count %>
           <% end %>
 
           <%= link_to user_fellowships_path(@user, partial: 'following'),
                       data: { turbo_frame: "profile_extension" },
                       class: "profile-stats" do %>
 
-            Following: <%= @user.followees.count %>
+            Following: <%= @user.followed_users.where(status: 'accepted').count %>
           <% end %>
 
         </div>
@@ -55,8 +55,14 @@
         <% if current_user != @user %>
             <div class="flex mt-6">
 
-              <% if following?(@user) %>
+              <% if accepted?(@user, current_user)  %>
                 <%= button_to "Unfollow", 
+                              user_fellowship_path(@user, 
+                                                Fellowship.find_by(follower_id: current_user, followee_id: @user)), 
+                              method: :delete, 
+                              class: "btn-primary dark:bg-gray-900 dark:hover:bg-gray-950" %>
+              <% elsif onhold?(@user, current_user) %>
+                <%= button_to "Requested", 
                               user_fellowship_path(@user, 
                                                 Fellowship.find_by(follower_id: current_user, followee_id: @user)), 
                               method: :delete, 

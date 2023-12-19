@@ -1,0 +1,24 @@
+<h1>Requests</h1>
+
+<% @requesting_users.each do |user| %>
+  <div class="post-card flex py-5 my-2 dark:bg-gray-900 border dark:hover:bg-gray-800">
+
+    <%= link_to profile_path(user), data: { turbo_frame: "_top" } do %>
+      <span class= "flex items-center">
+        <h5 class="p-5 text-xl font-medium dark:text-white"><%= user.username %></h5>
+      </span>
+    <% end %>
+
+    <div class="flex items-center">
+      <%= button_to "Accept", 
+                    user_fellowship_path(user, Fellowship.find_by(follower_id: user, followee_id: current_user)), 
+                    method: :patch,
+                    class: "btn-primary" %>
+
+      <%= button_to "Reject", 
+                    user_fellowship_path(user, Fellowship.find_by(follower_id: user, followee_id: current_user)), 
+                    method: :delete,
+                    class: "btn-primary dark:bg-gray-900 dark:hover:bg-gray-950" %>
+    </div>
+  </div>
+<% end %>
