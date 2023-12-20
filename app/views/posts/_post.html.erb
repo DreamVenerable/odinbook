@@ -1,17 +1,25 @@
   <div class="justify-center flex-1">
-    <%= link_to profile_path(post.user), data: {turbo_frame: "_top"} do %>
-      <span class="flex items-center gap-2.5">
-        <%= image_tag post.user.avatar_or_url, alt: 'User Avatar', class: 'user-avatar' %>
-        <%= post.user.username %>
-      </span>
-    <% end %>
+    <div class="w-fit dark:hover:bg-gray-800 rounded-lg p-1">
+      <%= link_to profile_path(post.user), data: {turbo_frame: "_top"} do %>
+        <span class="flex items-center gap-2.5">
+          <%= image_tag post.user.avatar_or_url, alt: 'User Avatar', class: 'user-avatar' %>
+          <%= post.user.username %>
+        </span>
+      <% end %>
+    </div>
 
-    <%= link_to post_path(post), 
-                data: {turbo_frame: "_top"},
-                class: "flex-1 w-max" do %>
+    <% if current_page?(post_path(post)) %>
       <div class="post-card flex-1 py-10 my-1">
           <p class="post-body break-all"><%= post.body %></p>
       </div>
+    <% else %>
+      <%= link_to post_path(post), 
+                  data: {turbo_frame: "_top"},
+                  class: "flex-1 w-max" do %>
+        <div class="post-card flex-1 py-10 my-1">
+            <p class="post-body break-all"><%= post.body %></p>
+        </div>
+      <% end %>
     <% end %>
 
     <%= button_to post_likes_path(post), class: "flex-none" do %>
