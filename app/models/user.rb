@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
 
+  before_create :set_default_avatar
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -25,5 +27,9 @@ class User < ApplicationRecord
       user.image_url = auth.info.image
       user.password = Devise.friendly_token[0, 20]
     end
+  end
+
+  def set_default_avatar
+    self.image_url ||= 'default_avatar.jpg'
   end
 end

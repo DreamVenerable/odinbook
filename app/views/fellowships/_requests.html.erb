@@ -5,6 +5,7 @@
 
     <%= link_to profile_path(user), data: { turbo_frame: "_top" } do %>
       <span class= "flex items-center">
+        <%= image_tag user.image_url, alt: 'User Avatar', class: 'user-avatar' %>
         <h5 class="p-5 text-xl font-medium dark:text-white"><%= user.username %></h5>
       </span>
     <% end %>
