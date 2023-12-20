@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments
 
+  has_one_attached :avatar
+
   validates :username, uniqueness: true
 
   before_create :set_default_avatar
@@ -31,5 +33,9 @@ class User < ApplicationRecord
 
   def set_default_avatar
     self.image_url ||= 'default_avatar.jpg'
+  end
+
+  def avatar_or_url
+    avatar.attached? ? avatar : image_url.presence || 'default_avatar.jpg'
   end
 end

@@ -1,7 +1,7 @@
   <div class="justify-center flex-1">
     <%= link_to profile_path(post.user), data: {turbo_frame: "_top"} do %>
       <span class="flex items-center gap-2.5">
-        <%= image_tag post.user.image_url, alt: 'User Avatar', class: 'user-avatar' %>
+        <%= image_tag post.user.avatar_or_url, alt: 'User Avatar', class: 'user-avatar' %>
         <%= post.user.username %>
       </span>
     <% end %>

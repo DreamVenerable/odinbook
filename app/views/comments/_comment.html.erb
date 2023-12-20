@@ -4,7 +4,7 @@
         <div class="flex items-center p-2 dark:hover:bg-gray-800 rounded-lg max-w-max">
           <%= link_to profile_path(comment.user) do %>
             <span class="flex items-center gap-2.5">
-              <%= image_tag comment.user.image_url, alt: 'User Avatar', class: 'comment-avatar' %>
+              <%= image_tag comment.user.avatar_or_url, alt: 'User Avatar', class: 'comment-avatar' %>
               <%= comment.user.username %>
             </span>
           <% end %>
