@@ -16,9 +16,20 @@
     <%= form.text_area :body, 
                        class: "input-text-area", 
                        input_html: { autofocus: true }, 
-                       placeholder: "Post..." %><br>
+                       placeholder: "What's on your mind?",
+                       rows: 4 %><br>
+    
+    <div class="block justify-end">
+      <%= form.file_field :image, class:"
+                                  block w-full text-sm text-slate-500
+                                  file:mr-4 file:py-2 file:px-4
+                                  file:rounded-lg file:border-0
+                                  file:text-sm file:font-semibold
+                                  file:bg-violet-50 file:text-violet-700
+                                  hover:file:bg-violet-200 file:mb-3" %>
+    </div>
 
-    <%= form.submit class: "btn-primary" %>
+    <%= form.submit class: "btn-primary cursor-pointer" %>
     <%= link_to "Cancel", 
                 posts_path, 
                 data: { turbo_frame: "_top" },

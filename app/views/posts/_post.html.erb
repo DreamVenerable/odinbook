@@ -10,14 +10,16 @@
 
     <% if current_page?(post_path(post)) %>
       <div class="post-card flex-1 py-10 my-1">
-          <p class="post-body break-all"><%= post.body %></p>
+        <%= image_tag post.image if post.image.attached? %>
+        <p class="post-body break-all"><%= post.body %></p>
       </div>
     <% else %>
       <%= link_to post_path(post), 
                   data: {turbo_frame: "_top"},
                   class: "flex-1 w-max" do %>
         <div class="post-card flex-1 py-10 my-1">
-            <p class="post-body break-all"><%= post.body %></p>
+          <%= image_tag post.image if post.image.attached? %>
+          <p class="post-body break-all"><%= post.body %></p>
         </div>
       <% end %>
     <% end %>
