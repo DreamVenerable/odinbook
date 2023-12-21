@@ -1,6 +1,6 @@
 <h2 align="center"><u>Odinbook</u></h2>
 
-![odinbook preview](app/assets/images/odinbookpreviewV1.gif)
+![odinbook preview](app/assets/images/ObV2.gif)
 
 <p align="center">
 <br>
@@ -58,27 +58,23 @@ Create a personalized home page that displays posts from users the current user 
 
 Enhance user experience by adding sorting and filtering options for posts and comments. Allow users to sort posts by likes or time and filter posts based on different criteria.
 
-### 3. Image Uploads
-
-Extend the application's capabilities by allowing users to post images. This could involve integrating image upload functionality for posts and user avatars.
-
-### 4. Comment Replies
+### 3. Comment Replies
 
 Enhance the commenting system by allowing users to reply to comments. Implement threaded or nested comments for more organized and engaging discussions.
 
-### 5. Testing
+### 4. Testing
 
 Introduce testing frameworks such as RSpec to ensure the robustness and reliability of the application. Write unit tests, integration tests, and system tests to cover critical functionality.
 
-### 6. Lazy Loading for Posts and Comments
+### 5. Lazy Loading for Posts and Comments
 
 Implement lazy loading for posts and comments to optimize page performance. Load an initial set of posts and comments, and dynamically fetch additional content as the user scrolls down or requests more data. This approach ensures a faster initial page load and a smoother user experience while navigating through posts and comments. Consider incorporating technologies like infinite scroll or pagination to manage the loading of content efficiently.
 
-### 7. Code Refactoring for DRYness and Readability
+### 6. Code Refactoring for DRYness and Readability
 
 Evaluate the existing codebase and identify opportunities for refactoring to adhere to the "Don't Repeat Yourself" (DRY) principle. Streamline and consolidate repetitive code sections, making the codebase more maintainable and improving overall readability. Consider adding more view partials to modularize and reuse components across different views, promoting a more organized and comprehensible structure.
 
 
-### 8. Live Messaging Feature
+### 7. Live Messaging Feature
 
 Introduce a real-time messaging system that allows users to engage in live conversations with their connections. Implement WebSocket or similar technologies to enable instant message delivery and receipt. Provide a user-friendly interface that displays message status (delivered, read) and supports multimedia content, enhancing the overall communication experience. Additionally, consider implementing typing indicators to inform users when their chat partners are composing messages. This feature adds a dynamic and interactive element to the platform, fostering more immediate and engaging communication among users.
