@@ -79,7 +79,6 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
-  database: odinbook_production
-  username: odinbook
+  database: odinbook_3v7u
+  username: seefow
   password: <%= ENV["ODINBOOK_DATABASE_PASSWORD"] %>
